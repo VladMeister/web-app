@@ -1,0 +1,39 @@
+﻿@model IEnumerable<ProductTracking.MVC.Models.UserModel>
+
+@{
+    Layout = "_Layout";
+    ViewBag.Title = "User List";
+}
+
+<form action="/User/UserSearch" data-ajax="true" data-ajax-mode="replace" data-ajax-update="#user-search" method="post">
+    <p>
+        Find user by login: @Html.TextBox("searchString", null, new { autocomplete = "off", maxlength = 50 })
+        <input id="search" type="submit" value="Search" class="btn btn-secondary" />
+    </p>
+</form>
+<div id="user-search">
+    @if (User.IsInRole("admin") && Model != null)
+    {
+        <table class="table">
+            <caption>Users form</caption>
+            <tr>
+                <th scope="col">Login</th>
+                <th scope="col"></th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Login</td>
+                    <td>@Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-secondary" })</td>
+                </tr>
+            }
+            <tr>
+                <th scope="col">@Html.ActionLink("Back", "Index", "Home", null, new { @class = "btn btn-secondary" })</th>
+            </tr>
+        </table>
+    }
+    else
+    {
+        <h2 style="text-align:center">User list is empty.</h2>
+    }
+</div>

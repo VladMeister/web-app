@@ -1,0 +1,56 @@
+﻿@model ProductTracking.MVC.Models.RegisterModel
+
+@{
+    ViewBag.Title = "Registation";
+    Layout = "_Layout";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary()
+    <table class="table">
+        <caption>Registration form</caption>
+        <tr>
+            <th scope="col">
+                Login:
+            </th>
+            <th scope="col">
+                @Html.EditorFor(model => model.Login, new { htmlAttributes = new { autocomplete = "off", maxlength = 30 } })
+            </th>
+            <th scope="col">
+
+            </th>
+            <th scope="col">
+
+            </th>
+        </tr>
+        <tr>
+            <th scope="col">
+                Password:
+            </th>
+            <th scope="col">
+                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { maxlength = 8 } })
+            </th>
+            <th scope="col">
+
+            </th>
+            <th scope="col">
+
+            </th>
+        </tr>
+        <tr>
+            <th scope="col">
+                Confirm password:
+            </th>
+            <th scope="col">
+                @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { maxlength = 8 } })
+            </th>
+            <th scope="col">
+                <input type="submit" value="Register" class="btn btn-secondary" />
+            </th>
+            <th scope="col">
+                @Html.ActionLink("Back", "Login", "Account", null, new { @class = "btn btn-secondary" })
+            </th>
+        </tr>
+    </table>
+}

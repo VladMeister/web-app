@@ -1,0 +1,33 @@
+﻿@{
+    Layout = "_Layout";
+    ViewBag.Title = "Home";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>@ViewBag.Title</title>
+    <link href="~/lib/bootstrap/dist/css/buttons.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div style="text-align:center; color:green;">
+        @TempData["message"]
+    </div>
+
+    <div style="text-align:center">
+        @if (User.IsInRole("admin"))
+        {
+            @Html.ActionLink("Products", "Index", "Product", null, new { @class = "button1" })
+
+            @Html.ActionLink("Add product", "Add", "Product", null, new { @class = "button2" })
+
+            @Html.ActionLink("Users management", "Index", "User", null, new { @class = "button3" })
+        }
+        else
+        {
+            @Html.ActionLink("Products", "Index", "Product", null, new { @class = "button1" })
+        }
+    </div>
+</body>
+</html>
+

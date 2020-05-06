@@ -1,0 +1,59 @@
+﻿@model ProductTracking.MVC.Models.ProductEditViewModel
+
+@{
+    ViewBag.Title = "Edit product info";
+    Layout = "_Layout";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary()
+    <table class="table">
+        <caption>Editing product form</caption>
+        <tr>
+            <td>
+                [Ex] Name:
+            </td>
+            <td>
+                @Html.EditorFor(model => model.Name,
+               new { htmlAttributes = new { autocomplete = "off", maxlength = 50 } })
+            </td>
+        </tr>
+        <tr>
+            <td>
+                [Ex] Weight:
+            </td>
+            <td>
+                @Html.EditorFor(model => model.Weight,
+               new { htmlAttributes = new { autocomplete = "off" } })
+            </td>
+        </tr>
+        <tr>
+            <td>
+                [Ex] Calority:
+            </td>
+            <td>
+                @Html.EditorFor(model => model.Calority,
+               new { htmlAttributes = new { autocomplete = "off", maxlength = 40 } })
+            </td>
+        </tr>
+        <tr>
+            <td>
+                [Ex] Price:
+            </td>
+            <td>
+                @Html.EditorFor(model => model.Price,
+               new { htmlAttributes = new { autocomplete = "off", maxlength = 40 } })
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.ActionLink("Back", "Index", "Home", null, new { @class = "btn btn-secondary" })
+            </td>
+            <td>
+                <input type="submit" value="Save changes" class="btn btn-secondary" />
+            </td>
+        </tr>
+    </table>
+}
+

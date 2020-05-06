@@ -1,0 +1,86 @@
+﻿@model ProductTracking.MVC.Models.ProductViewModel
+
+@{
+    Layout = "_Layout";
+    ViewBag.Title = "Add new product";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary()
+    <table class="table">
+        <caption>Adding product form</caption>
+        <tr>
+            <th scope="col">
+                Name:
+            </th>
+            <th scope="col">
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { autocomplete = "off", maxlength = 50 } })
+            </th>
+        </tr>
+        <tr>
+            <th scope="col">
+                Product type:
+            </th>
+            <th scope="col">
+                @Html.EditorFor(model => model.ProductType, new { htmlAttributes = new { autocomplete = "off", maxlength = 50 } })
+            </th>
+        </tr>
+        <tr>
+            <th scope="col">
+                Weight:
+            </th>
+            <th scope="col">
+                @Html.EditorFor(model => model.Weight, new { htmlAttributes = new { autocomplete = "off" } }) g.
+            </th>
+        </tr>
+        <tr>
+            <th scope="col">
+                Creation date:
+            </th>
+            <th scope="col">
+                @Html.EditorFor(model => model.CreationDate, new { htmlAttributes = new { autocomplete = "off", maxlength = 30 } })
+            </th>
+        </tr>
+        <tr>
+            <th scope="col">
+                Calority:
+            </th>
+            <th scope="col">
+                @Html.EditorFor(model => model.Calority, new { htmlAttributes = new { autocomplete = "off", maxlength = 40 } })
+            </th>
+        </tr>
+        <tr>
+            <th scope="col">
+                Price:
+            </th>
+            <th scope="col">
+                @Html.EditorFor(model => model.Price, new { htmlAttributes = new { autocomplete = "off", maxlength = 40 } }) r.
+            </th>
+        </tr>
+        <tr>
+            <th scope="col">
+                Company Name:
+            </th>
+            <th scope="col">
+                @Html.EditorFor(model => model.CompanyName, new { htmlAttributes = new { autocomplete = "off", maxlength = 40 } })
+            </th>
+        </tr>
+        <tr>
+            <th scope="col">
+                Realization place:
+            </th>
+            <th scope="col">
+                @Html.EditorFor(model => model.RealizationPlaceName, new { htmlAttributes = new { autocomplete = "off", maxlength = 40 } })
+            </th>
+        </tr>
+        <tr>
+            <th scope="col">
+                @Html.ActionLink("Back", "Index", "Home", null, new { @class = "btn btn-secondary" })
+            </th>
+            <th scope="col">
+                <input type="submit" value="Add" class="btn btn-secondary" />
+            </th>
+        </tr>
+    </table>
+}

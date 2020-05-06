@@ -1,0 +1,86 @@
+﻿@model IEnumerable<ProductTracking.MVC.Models.ProductViewModel>
+
+@if (Model.Count() != 0)
+{
+    <div id="product-list">
+        <table class="table">
+            <caption>Product form</caption>
+            <tr>
+                <th scope="col">
+                    Name
+                </th>
+                <th scope="col">
+                    Product Type
+                </th>
+                <th scope="col">
+                    Weight
+                </th>
+                <th scope="col">
+                    Creation date
+                </th>
+                <th scope="col">
+                    Calority
+                </th>
+                <th scope="col">
+                    Price
+                </th>
+                <th scope="col">
+
+                </th>
+                <th scope="col">
+
+                </th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @item.Name
+                    </td>
+                    <td>
+                        @item.ProductType
+                    </td>
+                    <td>
+                        @item.Weight g.
+                    </td>
+                    <td>
+                        @item.CreationDate
+                    </td>
+                    <td>
+                        @item.Calority
+                    </td>
+                    <td>
+                        @item.Price r.
+                    </td>
+                    @if (this.User.IsInRole("admin"))
+                    {
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-secondary" })
+                        </td>
+                        <td>
+                            @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-secondary" })
+                        </td>
+                    }
+                    else
+                    {
+                        <td>
+                        </td>
+                        <td>
+                        </td>
+                    }
+                </tr>
+            }
+            <tr>
+                <th scope="col">
+                    @Html.ActionLink("Back", "Index", "Home", null, new { @class = "btn btn-secondary" })
+                </th>
+            </tr>
+        </table>
+    </div>
+}
+else
+{
+    <h2 style="text-align:center">List of products is empty</h2>
+}
+

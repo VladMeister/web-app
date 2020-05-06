@@ -1,0 +1,9 @@
+﻿body {
+    background-image: url('../../../backgroung.jpg');
+    margin: 0;
+}
+
+.maintitle {
+    padding: 50px 20px;
+    text-align: center;
+}

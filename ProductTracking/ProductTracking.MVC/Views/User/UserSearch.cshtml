@@ -1,0 +1,36 @@
+﻿@model ProductTracking.MVC.Models.UserModel
+
+@if (User.IsInRole("admin") && Model != null)
+{
+    <div id="user-search">
+        <table class="table">
+            <caption>Users form</caption>
+            <tr>
+                <th scope="col">
+                    Login
+                </th>
+                <th scope="col">
+
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    @Model.Login
+                </td>
+
+                <td>
+                    @Html.ActionLink("Delete", "Delete", new { id = Model.Id }, new { @class = "btn btn-secondary" })
+                </td>
+            </tr>
+            <tr>
+                <th scope="col">
+                    @Html.ActionLink("Back", "Index", "Home", null, new { @class = "btn btn-secondary" })
+                </th>
+            </tr>
+        </table>
+    </div>
+}
+else
+{
+    <h2 style="text-align:center">Such user does not exist.</h2>
+}

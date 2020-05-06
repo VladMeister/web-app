@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Layout page</title>
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link href="~/lib/bootstrap/dist/css/layout.css" rel="stylesheet" type="text/css" />
+    <script src="~/scripts/jquery-1.8.3.min.js"></script>
+    <script src="~/scripts/jquery.unobtrusive-ajax.min.js"></script>
+</head>
+<body>
+    <div>
+        @if (User.Identity.IsAuthenticated)
+        {
+            <input type="button" value="Logout" class="btn btn-secondary" onclick="location.href='@Url.Action("Logout", "Account")'" />
+            <p style="font-style:italic">@User.Identity.Name</p>
+            if (this.User.IsInRole("admin"))
+            {
+                <h6>Admin</h6>
+            }
+        }
+        <header>
+            <div class="maintitle">
+                <h3>@ViewBag.Title</h3>
+            </div>
+            <br />
+        </header>
+        @RenderBody()
+        <br />
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year  @Html.ActionLink("Web project - Pershukevich", "Index", "Home", null, new { style = "text-decoration:none;" })</p>
+        </footer>
+    </div>
+</body>
+</html>
